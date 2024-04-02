@@ -1,0 +1,46 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+// Define the structure for the stone node
+typedef struct Kim {
+    char *alphabet;  // Menyimpan huruf pada batu
+    struct Kim *link;  // Pointer ke node berikutnya
+} Kim;
+
+int main() {
+    // Inisialisasi node batu sesuai dengan petunjuk
+    Kim l1 = {.link = NULL, .alphabet = "F"};
+    Kim l2 = {.link = NULL, .alphabet = "M"};
+    Kim l3 = {.link = NULL, .alphabet = "A"};
+    Kim l4 = {.link = NULL, .alphabet = "I"};
+    Kim l5 = {.link = NULL, .alphabet = "K"};
+    Kim l6 = {.link = NULL, .alphabet = "T"};
+    Kim l7 = {.link = NULL, .alphabet = "N"};
+    Kim l8 = {.link = NULL, .alphabet = "O"};
+    Kim l9 = {.link = NULL, .alphabet = "R"};
+
+    // Mengatur koneksi antar batu sesuai dengan urutan yang diberikan
+    l3.link = &l4;
+    l4.link = &l5;
+    l5.link = &l6;
+    l6.link = &l7;
+    l7.link = &l8;
+    l8.link = &l9;
+    l9.link = &l1;
+    l1.link = &l2;
+
+    // Mengakses huruf pada batu menggunakan l3 sebagai titik awal
+    printf("%s", l3.link->alphabet); // Output: "I"
+    printf("%s", l3.link->link->link->link->alphabet); // Output: "N"
+    printf("%s", l3.link->link->link->link->link->link->link->alphabet); // Output: "F"
+    printf("%s", l3.link->link->link->link->link->alphabet); // Output: "O"
+    printf("%s", l3.link->link->link->link->link->link->alphabet); // Output: "R"
+    printf("%s", l3.link->link->link->link->link->link->link->link->alphabet); // Output: "M"
+    printf("%s", l3.alphabet); // Output: "A"
+    printf("%s", l3.link->link->link->alphabet); // Output: "T"
+    printf("%s", l3.link->alphabet); // Output: "I"
+    printf("%s", l3.link->link->alphabet);//Output : "K"
+    printf("%s", l3.alphabet); // Output: "A")
+
+    return 0;
+}
